@@ -77,6 +77,7 @@ startBtnEl.addEventListener('click', () => {
     ) {
       clearInterval(timerInterval);
       Notiflix.Notify.success('Time is up!');
+      startBtnEl.setAttribute('disabled', 'disabled');
     }
   }, 1000);
 });
