@@ -21,4 +21,8 @@ img {
 }
 .value {
   color: rgb(220, 20, 20);
+  font-size: 30px;
+}
+.label {
+  font-size: 25px;
 }
