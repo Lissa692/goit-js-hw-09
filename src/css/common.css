@@ -16,3 +16,9 @@ img {
   display: block;
   max-width: 100%;
 }
+.field {
+  display: block;
+}
+.value {
+  color: rgb(220, 20, 20);
+}
