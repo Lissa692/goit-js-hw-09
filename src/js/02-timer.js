@@ -12,24 +12,22 @@ const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 
 // dataTimeEl.addEventListener('input', dateTime);
-
+startBtnEl.setAttribute('disabled', 'disabled');
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
-
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    console.log(selectedDates[0]);
-
-    if (selectedDates < new Date()) {
-      Notiflix.Notify.failure('Please choose a date in the future');
+    // console.log(selectedDates[0]);
+    if (selectedDates[0] <= new Date()) {
       startBtnEl.setAttribute('disabled', 'disabled');
+      return Notiflix.Notify.failure('Please choose a date in the future');
     }
-    return startBtnEl.removeAttribute('disabled', 'null');
+    startBtnEl.removeAttribute('disabled', 'null');
   },
 };
 function convertMs(ms) {
@@ -50,7 +48,6 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
-// function dateTime() {}
 flatpickr(dataTimeEl, options);
 
 startBtnEl.addEventListener('click', () => {
@@ -77,7 +74,7 @@ startBtnEl.addEventListener('click', () => {
     ) {
       clearInterval(timerInterval);
       Notiflix.Notify.success('Time is up!');
-      startBtnEl.setAttribute('disabled', 'disabled');
+      // startBtnEl.setAttribute('disabled', 'disabled');
     }
   }, 1000);
 });
