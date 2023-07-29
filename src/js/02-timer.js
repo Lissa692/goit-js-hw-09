@@ -10,7 +10,7 @@ const daysEl = document.querySelector('[data-days]');
 const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
-
+let selectedDate = null;
 // dataTimeEl.addEventListener('input', dateTime);
 startBtnEl.setAttribute('disabled', 'disabled');
 function addLeadingZero(value) {
@@ -23,11 +23,13 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     // console.log(selectedDates[0]);
+
     if (selectedDates[0] <= new Date()) {
       startBtnEl.setAttribute('disabled', 'disabled');
       return Notiflix.Notify.failure('Please choose a date in the future');
     }
     startBtnEl.removeAttribute('disabled', 'null');
+    selectedDate = selectedDates[0];
   },
 };
 function convertMs(ms) {
@@ -51,7 +53,6 @@ function convertMs(ms) {
 flatpickr(dataTimeEl, options);
 
 startBtnEl.addEventListener('click', () => {
-  const selectedDate = flatpickr.parseDate(dataTimeEl.value);
   const currentDate = new Date();
   const differenceDate = selectedDate - currentDate;
   if (differenceDate <= 0) {
