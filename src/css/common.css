@@ -16,10 +16,15 @@ img {
   display: block;
   max-width: 100%;
 }
-.field {
-  display: block;
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 25px;
 }
 .value {
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
   color: rgb(220, 20, 20);
   font-size: 30px;
 }
